@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald" rel="stylesheet">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    
+ </script>
+ <script>
+    function myFunction() {
+        var tid = localStorage.getItem("serialNumber");
+    
+    document.getElementById("track_id").innerHTML = tid;
+    }
+</script>
+
+  <!-- Style -->
+  <link rel="stylesheet" href="../static/css/style.css">
+  <style type="text/css">
+    h3, h5{
+      font-family: oswald;
+      
+    }
+    h5{
+      font-size: 150%;
+      margin-bottom: 15px;
+      color: #1A73E8;
+    }
+    html, body {
+        height: 100%;
+    }
+    .fill-height {
+        min-height: 100%;
+        height:auto !important; /* cross-browser */
+        height: 100%; /* cross-browser */
+    }
+  </style>
+  <title>Complaint Form</title>
+</head>
+<body onload="myFunction()">
+
+
+
+  <nav class="navbar " style="background-color: #082F41">
+        <div class="container" style="background-color: #082F41">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#"><h3 style="color:white; align-items: left;">City Governance</h3></a>
+      </div>
+<a href="/">
+      <button class="btn btn-primary rounded-0 py-2 px-4" style="background-color: #1A73E8;">Complaint</button>
+    </a>
+    </div>
+  </nav>
+
+
+<div class="container" style="align-items: center; justify-content: center; padding: 50px 10px 10px 10px; ">
+  <div class="row align-items-stretch no-gutters contact-wrap fill-height">
+    <div class="col-md-12">
+      <div class="form h-100" >
+<center>
+            
+           <h3 style="letter-spacing: -1px;">Complaint Registered Successfully</h3>
+ </center>          
+   
+    <center>
+      <img src="../static/images/envelope.jpg" alt="Envelope" width="300" height="200" style="margin-top: 30px;margin-bottom: 50px;">
+      <h5>COMPLAINT ID </h5><h5 id="track_id"></h5>
+      <p>Use this Id to track the status of your complaint anytime.</p>
+    </center>
+
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+  <script src="../static/js/popper.min.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/jquery.validate.min.js"></script>
+  <script src="../static/js/main.js"></script>
+
+</body>
+</html>
