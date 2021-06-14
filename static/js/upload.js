@@ -14,6 +14,7 @@ var firebaseConfig = {
  document.getElementById('contactForm').addEventListener('submit',submitform);
  function submitform(e){
     
+    $("#loadingicon").css("display","block");
     var email = getInputVal('email')
     var location = getInputVal('location')
     var message = getInputVal('message')
@@ -33,9 +34,9 @@ var firebaseConfig = {
          date.getMilliseconds()
      ];
      var trackId = components.join("");
-     
+    localStorage.setItem("serialNumber", trackId); 
     saveUserInfo(trackId, email, location, message);
-    localStorage.setItem("serialNumber", trackId);
+    
     }
 }
 
@@ -45,14 +46,41 @@ var firebaseConfig = {
  }   
 
  function saveUserInfo(trackId, email, location, message){
-    var userInfo = firebase.database().ref("UserInfo/"+ trackId);
-    userInfo.set({
+    // var userInfo = firebase.database().ref("UserInfo/"+ trackId);
+    // userInfo.set({
       
-        email: email,
-        location: location,
-        message: message,
-        progressFlag: 0,
-    }).then(() => {
-        window.location = 'trackinfo.html';
-    })
+    //     email: email,
+    //     location: location,
+    //     message: message,
+    //     progressFlag: 0,
+    // }).then(() => {
+    //     window.location = 'trackinfo.html';
+    // })
+    var data = {
+           TId: trackId,
+           email: email,
+           location: location,
+           message: message,
+           progressFlag: 0,
+                }
+                
+           $.ajax({
+                    url: '/',
+                    type: 'POST',
+                    data: {
+                        'TId': trackId,
+                        'email': email,
+                        'location': location,
+                        'message': message,
+                       
+                    },
+                    success: function(response){
+                      console.log(response);
+                    }
+                  }) 
+                window.location = "trackinfo.html";              
  }
+
+
+
+
