@@ -44,7 +44,7 @@ pyasn1-modules==0.2.8
 pycparser==2.20
 pycryptodome==3.10.1
 pyparsing==2.4.7
-Pyrebase==3.0.27
+-e git+https://github.com/roobeshbalaji/Pyrebase@591d0cb91ed85d210bb54909ee23f526e070d3bc#egg=Pyrebase
 python-dateutil==2.8.1
 python-jwt==3.3.0
 pytz==2021.1
