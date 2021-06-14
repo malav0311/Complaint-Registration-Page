@@ -56,7 +56,3 @@ var firebaseConfig = {
         window.location = 'trackinfo.html';
     })
  }
-
-
-
-
