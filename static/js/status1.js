@@ -23,7 +23,7 @@ function findProgress(e){
     }
     else{
     var db = firebase.database();
-    var users = db.ref('UserInfo').child(cid).child('progressFlag').once('value').then(function(snapshot){
+    var users = db.ref('UserInfo').child(cid).child('progress').once('value').then(function(snapshot){
   data = snapshot.val();
   if(data===1){
     document.getElementById("hpro").innerHTML = "Complaint Status: Solved";
