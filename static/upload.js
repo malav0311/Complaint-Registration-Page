@@ -82,7 +82,7 @@ var firebaseConfig = {
                       console.log(response);
                     }
                   }) 
-                console("sent")
+                console.log("sent")
                 window.location = "trackinfo.html";              
  }
 
