@@ -61,9 +61,13 @@ var firebaseConfig = {
            email: email,
            location: location,
            message: message,
-           progressFlag: 0,
+           
                 }
-                
+           console.log(trackId)
+           console.log(email)
+           console.log(location)   
+           console.log(message) 
+           
            $.ajax({
                     url: '/',
                     type: 'POST',
@@ -78,6 +82,7 @@ var firebaseConfig = {
                       console.log(response);
                     }
                   }) 
+                console("sent")
                 window.location = "trackinfo.html";              
  }
 

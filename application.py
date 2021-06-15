@@ -181,6 +181,7 @@ application = Flask(__name__, template_folder = 'templates', static_folder='stat
 def index():
     global TId,email,location,message,progress,issue_type,severity
     if request.method == 'POST': 
+        
         TId = request.form['TId']
         email = request.form['email']
         location = request.form['location']
