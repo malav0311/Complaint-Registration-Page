@@ -27,7 +27,7 @@ from nltk.stem import WordNetLemmatizer
 
 #firebase
 import pyrebase
-from firebase_admin import credentials, firestore, initialize_app, db
+import time
 
 
 all_stopwords = stopwords.words('english')
@@ -139,6 +139,7 @@ def push_data(id, email, location, message, progress, issue_type, severity):
      
      firebase = pyrebase.initialize_app(config)
      db = firebase.database()
+     time.sleep(2)
      db.child("UserInfo").child(id).set({"email":email})
      db.child("UserInfo").child(id).update({"location":location})
      db.child("UserInfo").child(id).update({"message":message})
@@ -163,6 +164,7 @@ def push_data(id, email, location, message, progress, issue_type, severity):
          ss = "Severe"     
 
      db.child("UserInfo").child(id).update({"severity":ss})
+     time.sleep(3)
     # # Initialize Firestore DB
     # cred = credentials.Certificate("static\serviceKey.json")
     # default_app = initialize_app(cred,{'databaseURL' : 'https://city-5dc6f-default-rtdb.firebaseio.com/'})
