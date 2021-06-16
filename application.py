@@ -165,11 +165,7 @@ def push_data(id, email, location, message, progress, issue_type, severity):
 
      db.child("UserInfo").child(id).update({"severity":ss})
      time.sleep(3)
-    # # Initialize Firestore DB
-    # cred = credentials.Certificate("static\serviceKey.json")
-    # default_app = initialize_app(cred,{'databaseURL' : 'https://city-5dc6f-default-rtdb.firebaseio.com/'})
-    # root = db.reference()
-    # new_user = root.child('UserInfo').child(id).set(d)
+
     
      return "success"
 
