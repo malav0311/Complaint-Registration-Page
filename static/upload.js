@@ -67,7 +67,7 @@ var firebaseConfig = {
            console.log(email);
            console.log(location);   
            console.log(message);
-           
+           var token = document.getElementsByName("csrfToken").value;
            $.ajax({
                     url: '/Complaint',
                     type: 'POST',
@@ -83,7 +83,7 @@ var firebaseConfig = {
                     }
                   }) 
                 console.log("sent")
-               // window.location.href = "trackinfo";              
+                window.location.href = "trackinfo";              
  }
 
 
