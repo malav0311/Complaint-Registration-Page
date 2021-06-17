@@ -178,11 +178,14 @@ def landing():
     return render_template('landing.html')
 
 
-@application.route('/Complaint.html', methods = ['GET','POST'])
+@application.route('/Complaint', methods = ['GET','POST'])
 def complaint():
     global TId,email,location,message,progress,issue_type,severity
     if request.method == 'POST': 
-        
+            # print("hello")
+            # jsdata = request.form['send_data']
+            # print(jsdata)
+        print(request.form)    
         TId = request.form['TId']
         email = request.form['email']
         location = request.form['location']
@@ -192,40 +195,35 @@ def complaint():
         severity = severe(com) 
         issue_type = issue(com)       
 
-        # d = {
-        #     'email': email,
-        #     'location': location,
-        #     'message': message,
-        #     'progressFlag': progress,
-        #     'issue': issue_type,
         
-        # }
+  
         q = push_data(TId,email,location,message,progress,issue_type, severity)
-        print(q)
+     
     return render_template('Complaint.html')    
 
-@application.route('/trackinfo.html')
-def trackinfo():
+@application.route('/trackinfo')
 
+def trackinfo():
+    
     return render_template('trackinfo.html')
 
-@application.route('/status.html')
+@application.route('/status')
 def status():
     return render_template('status.html')        
 
-@application.route('/signin.html')
+@application.route('/signin')
 def signin():
     return render_template('signin.html')
 
-@application.route('/Dashboard1.html')
+@application.route('/Dashboard1')
 def Dashboard1():
     return render_template('Dashboard1.html')
  
-@application.route('/index.html')
+@application.route('/index')
 def index():
     return render_template('index.html')
 
-@application.route('/index1.html')
+@application.route('/index1')
 def index1():
     return render_template('index1.html')    
     

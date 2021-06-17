@@ -20,7 +20,7 @@ var firebaseConfig = {
   .then((userCredential) => {
     // Signed in
     var user = userCredential.user;
-    window.location = "Dashboard1.html"
+    window.location = "Dashboard1"
     // ...
   })
   .catch((error) => {

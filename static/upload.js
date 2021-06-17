@@ -13,7 +13,7 @@ var firebaseConfig = {
  
  document.getElementById('contactForm').addEventListener('submit',submitform);
  function submitform(e){
-    
+    e.preventDefault();
     $("#loadingicon").css("display","block");
     var email = getInputVal('email')
     var location = getInputVal('location')
@@ -56,20 +56,20 @@ var firebaseConfig = {
     // }).then(() => {
     //     window.location = 'trackinfo.html';
     // })
-    var data = {
-           TId: trackId,
-           email: email,
-           location: location,
-           message: message,
+    var data = [{
+           'TId': trackId,
+           'email': email,
+           'location': location,
+           'message': message,
            
-                }
-           console.log(trackId)
-           console.log(email)
-           console.log(location)   
-           console.log(message) 
+                }];
+           console.log(trackId);
+           console.log(email);
+           console.log(location);   
+           console.log(message);
            
            $.ajax({
-                    url: '/Complaint.html',
+                    url: '/Complaint',
                     type: 'POST',
                     data: {
                         'TId': trackId,
@@ -83,7 +83,7 @@ var firebaseConfig = {
                     }
                   }) 
                 console.log("sent")
-                window.location = "trackinfo.html";              
+                window.location.href = "trackinfo";              
  }
 
 
