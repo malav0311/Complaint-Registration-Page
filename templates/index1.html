@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Overall Dashboard</title>
+    <!-- MDB icon -->
+   
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald" rel="stylesheet">
+    <!-- MDB -->
+    <link rel="stylesheet" href="../static/css/mdb.min.css" />
+    <style>
+html, body {
+    margin: auto;
+    width: 100%;
+    height: auto;
+}      
+body {
+    font-family: "oswald", sans-serif;
+    transition: background-color .5s;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #082F41;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+    margin: 15px;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px !important;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 0px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+a:hover {
+  background-color: #4d6276;
+}
+.card{
+  padding:0%;
+  margin:10px;
+  width: 70%;
+}
+.col{
+  padding: 0px 0px 0px 0px;
+}
+
+
+    </style>
+    <script>
+      
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+    document.body.style.backgroundColor = "white";
+}
+
+    </script>
+  </head>
+  <body onload="loading()"  style="background-color: #FBFBFB; color: #282828;">
+    <!-- Start your project here-->
+    
+<div id="mySidenav" class="sidenav">
+  <p style="color: #fff;cursor: pointer;" href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</p>
+  <a href="Dashboard1.html"><i class="fas fa-home"></i> Home</a>		
+  <a href="index.html"><i class="fas fa-tasks"></i> In Progress</a>		
+  <a href="#"><i class="fas fa-check-square"></i> Solved</a>		
+  <div style="margin-left: 40px;">
+    <a href="/">
+      <button  type="button" style="background-color: #1A73E8; color: #FFF;" class="btn btn-rounded">Sign Out</button>
+    </a> 
+  </div>
+</div>
+
+<div id="main" style="background-color: #FBFBFB;">
+  <nav class="navbar" style="background-color: #155263; height: 80px;">
+    <div class="container" style="background-color: #155263;">
+      <span style="font-size:30px;cursor:pointer; color: #FFF;" onclick="openNav()"><i class="fas fa-bars"></i></span>
+      <span class="navbar-brand mb-0 h1" style="font-family: oswald;font-size: xx-large; color:#FFF">COMPLAINT MONITORING</span>
+      <span class="navbar-brand mb-0 h1"></span>
+    </div>
+  </nav>
+
+<form id="filterform" method="POST">
+<div class="row" style="margin-left:140px; margin-top:30px;">
+  <div class="col-sm">
+    <h4 >Solved</h4>
+  </div>
+  <div class="col-sm">
+    <select id="issue" class="form-select" style="width:200px;">
+      <option selected value="">Select Issue</option>
+      <option value="electric">Electricity</option>
+      <option value="crime">Crime</option>
+      <option value="water">Water</option>
+      <option value="sewage">Sewage</option>
+      <option value="road">Road</option>
+      <option value="garbage">garbage</option>
+    
+    </select>
+  </div>
+  <div class="col-sm">
+    <select id="location" class="form-select" style="width:200px;">
+      <option selected value="">Location</option>
+      <option value ="Chromepet">Chromepet</option> 
+      <option value ="Velachery">Velachery</option> 
+      <option value ="Guindy">Guindy</option> 
+      <option value ="Pallavaram">Pallavaram</option> 
+      <option value ="Tambaram">Tambaram</option> 
+      <option value ="Sanatorium">Sanatorium</option> 
+      <option value ="Chitlapakkam">Chitlapakkam</option> 
+      <option value ="Saidapet">Saidapet</option> 
+      <option value ="Tirusulam">Tirusulam</option> 
+      <option value ="Vandalur">Vandalur</option>
+    
+    </select>
+  </div>
+  <div class="col-sm">
+    <select  id="severebool" class="form-select" style="width:200px;">
+      <option selected value="">Select severity</option>
+      <option value="Severe">Severe</option>
+      <option value="Not Severe">Not Severe</option>
+    
+    </select>
+  </div>
+  <div class="col-sm">
+    <button type="submit" class="btn btn-primary">Filter</button>
+  </div>
+
+  
+  
+</div>
+</form>
+
+
+<div style="margin-left:80px; margin-top:30px;" class="card-deck">
+  
+  <div>
+    <center>
+    <div id="cardinfo">
+
+    </div>
+    </center>
+  </div>
+
+  
+</div>
+
+
+
+    <!-- End your project here-->
+
+    <!-- MDB -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    
+    <!-- Custom scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js" integrity="sha512-VCHVc5miKoln972iJPvkQrUYYq7XpxXzvqNfiul1H4aZDwGBGC0lq373KNleaB2LpnC2a/iNfE5zoRYmB4TRDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase.js"></script>
+    <script src="../static/js/progress1.js"></script>
+   
+  </body>
+</html>

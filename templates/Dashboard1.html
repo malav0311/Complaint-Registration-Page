@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Overall Dashboard</title>
+    <!-- MDB icon -->
+   
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald" rel="stylesheet">
+  
+    <!-- MDB -->
+    <link rel="stylesheet" href="../static/css/mdb.min.css" />
+    <style>
+html, body {
+    margin: auto;
+    width: 100%;
+    height: auto;
+}      
+body {
+    font-family: "oswald", sans-serif;
+    transition: background-color .5s;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #082F41;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+    margin: 15px;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px !important;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 0px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+a:hover {
+  background-color: #4d6276;
+}
+.card{
+  padding:0%;
+  margin:10px;
+}
+.col{
+  padding: 0px 0px 0px 0px;
+}
+
+
+    </style>
+    <script>
+      
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+    document.body.style.backgroundColor = "white";
+}
+
+    </script>
+  </head>
+  <body style="background-color: #FBFBFB; color: black;">
+    <!-- Start your project here-->
+    
+<div id="mySidenav" class="sidenav">
+  <p style="color: #fff;cursor: pointer;" href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</p>
+  <a href="#"><i class="fas fa-home"></i> Home</a>		
+  <a href="index.html"><i class="fas fa-tasks"></i> In Progress</a>		
+  <a href="#"><i class="fas fa-check-square"></i> Solved</a>		
+  <div style="margin-left: 40px;">
+ <a href="/">
+    <button  type="button" style="background-color: #1A73E8; color: #FFF;" class="btn btn-rounded">Sign Out</button>
+  </a>  
+  </div>
+</div>
+
+<div id="main" style="background-color: #FBFBFB;">
+  <nav class="navbar" style="background-color: #155263; height: 80px;">
+    <div class="container" style="background-color: #155263;">
+      <span style="font-size:30px;cursor:pointer; color: #FFF;" onclick="openNav()"><i class="fas fa-bars"></i></span>
+      <span class="navbar-brand mb-0 h1" style="font-family: oswald;font-size: xx-large; color:#FFF">COMPLAINT MONITORING</span>
+      <span class="navbar-brand mb-0 h1"></span>
+    </div>
+  </nav>
+
+  <!-- <div style="margin-left: 5em; margin-top: 1em;">
+    <h1>Welcome Admin</h1>
+  </div> -->
+
+  <div class="container-fluid" style="margin-left: 30px; margin-top: 30px;">
+  <div class="row" style="display: flex; justify-content: space-between; margin-right: 22px;">
+    <div class="col" style="width: 20%;">
+      
+        <div class="card text-center" style="width: 22em;height: 180px; background-color: #3FC1C9; color: #FFF; box-shadow: 0 1.5em 2.5em -0.5em rgb(63,193,201,0.7);">
+          <div class="card-body">
+            <h4 class="card-title">Total Issues</h4>
+            <div style="display: flex; justify-content: space-evenly; margin-top: 30px;">
+            <i class="fas fa-globe fa-3x"></i>
+            <h1 id="total"></h1>
+          </div>
+          </div>
+     
+      </div>
+    </div>
+    <div class="col">
+      
+      <div class="card text-center" style="width: 22em;height: 180px; background-color: #f95959; color: #FFF; box-shadow: 0 1.5em 2.5em -0.5em rgb(249,89,89,0.7);">
+          <div class="card-body">
+            <h4 id=class="card-title">Severe</h4>
+            <div style="display: flex; justify-content: space-evenly; margin-top: 30px;">
+              <i class="fas fa-exclamation-triangle fa-3x"></i>
+              <h1 id="severe"></h1>
+          </div>
+            
+           
+          
+          </div>
+    
+      </div>
+    </div>
+    <div class="col">
+     
+      <div class="card text-center" style="width: 22em;height: 180px; background-color: #729D39; color: #FFF; box-shadow: 0 1.5em 2.5em -0.5em rgb(114,157,57,0.7);">
+          <div class="card-body">
+            <h4 class="card-title">Not Severe</h4>
+            <div style="display: flex; justify-content: space-evenly; margin-top: 30px;">
+              <i class="fas fa-list-alt fa-3x"></i>
+              <h1 id="notsevere"></h1>
+          </div>
+          
+            
+          
+          </div>
+        </div>
+ 
+    </div>
+    <div class="col">
+   
+      <div class="card text-center" style="width: 22em;height: 180px; background-color: #FF9A3C; color: #FFF; box-shadow: 0 1.5em 2.5em -0.5em rgb(255,154,60,0.7);">
+        <div class="card-body">
+          <h4 class="card-title">Total Locations</h4>
+          <div style="display: flex; justify-content: space-evenly; margin-top: 30px;">
+            <i class="fas fa-map-marked-alt fa-3x"></i>
+          <h1 id="numLoc"></h1>
+        </div>
+        </div>
+   
+    </div>
+    
+    </div>
+  </div>
+  </div>
+
+  <!-- <div class="container-fluid" style="margin: 0px;">
+  <div class="row" style="display: flex; justify-content: flex-start; margin-right: 43px;">
+    <div class="col">
+      <div class="card text-center" style="width: 100%; height: 400px;">
+        <div class="card-body" style="height: 400px; width: 800px;">
+          <div style="height: 200px;">
+          <canvas id="barchart" style="overflow: hidden;" width="400" height="400"></canvas>
+          </div>
+        </div>
+   
+    </div>
+    </div>
+
+    
+  </div>
+</div> -->
+
+<div class="container-fluid" style="margin-right: 40px;;">
+
+  <div class="row" style="display: flex; justify-content: center; height: 400px;">
+    
+    <div class="col-md-9" >
+      
+  
+        <div class="card" style="width: 97%; height: 100%;">
+          <div style="height: 200px; width: 600px;">
+            <div id="chart" style="max-width: 650px;margin: 35px auto;">      
+            </div>
+        
+        </div>
+        </div>
+      
+      
+     
+    </div>
+    
+    <div class="col" style="height: 400px;">
+      <div class="card text-center" style="width: 22em;height: 400px; ">
+        <div class="card-body">
+          <h4 class="card-title">Progress</h4>
+          <div id="chartpie" style="max-width: 650px;margin: 35px auto;">
+            
+          </div>
+          <div style="display: flex; justify-content: space-evenly; margin-top: 30px;">
+            <h4>In Progress: </h4>
+          <h4 id="numPro"></h4>
+        </div>
+        <div style="display: flex; justify-content: space-evenly; margin-top: 30px;">
+          <h4>Completed  :</h4>
+        <h4 id="numCom"></h4>
+      </div>
+   
+    </div>
+    </div>
+  </div>
+
+  
+<!-- <div class="row" style="display: flex; justify-content: space-between; margin-right: 22px;width:70%; height:400px;">
+  
+  <div class="card">
+    <div style="height: 200px; width: 600px;">
+      <div id="chart" style="max-width: 650px;margin: 35px auto;">
+
+      </div>
+  
+  </div>
+  </div>
+
+
+</div> -->
+ 
+
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+    <!-- End your project here-->
+
+    <!-- MDB -->
+    <script type="text/javascript" src="../static/js/mdb.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    
+    <!-- Custom scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js" integrity="sha512-VCHVc5miKoln972iJPvkQrUYYq7XpxXzvqNfiul1H4aZDwGBGC0lq373KNleaB2LpnC2a/iNfE5zoRYmB4TRDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase.js"></script>
+    <script src="../static/js/charts.js"></script>
+  </body>
+</html>

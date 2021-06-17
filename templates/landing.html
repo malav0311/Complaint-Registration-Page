@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>landing page</title>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald" rel="stylesheet">
+    <style>
+       
+* {
+  box-sizing: border-box;
+}
+body {
+  background: #fff;
+  font-weight: 700;
+  color: #14273d;
+  font-size: 22px;
+  font-family: "oswald";
+  overflow: hidden;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.navbar {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr 1fr 1fr 1fr 1fr);
+  margin-top: 20px;
+  grid-gap: 20px;
+}
+.navbar__link {
+  text-align: center;
+  padding: 10px 30px;
+  padding-top: 5px;
+}
+.navbar__link--item {
+  color: #14273d;
+}
+.navbar__link--item--left {
+  transition: border 0.3s linear;
+}
+.navbar__link--item--left:after {
+  display: block;
+  content: "";
+  border-bottom: solid 2px #14273d;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+}
+.navbar__link--item--left:hover:after {
+  transform: scaleX(1);
+}
+.navbar__link:nth-child(2) {
+  margin-left: 340px;
+}
+.hero {
+  display: grid;
+  grid-template-columns: repeat(2, 700px 1fr);
+  align-items: center;
+}
+.hero__content {
+  margin: 0 0 100px 60px;
+}
+.hero__content h3 {
+  margin-top: -35px;
+  color: #1A73E8;
+}
+.hero__content hr {
+  width: 130px;
+  margin: -10px 0 0 0;
+}
+.btn {
+  border: none;
+  outline: none;
+  padding: 15px 45px;
+  background-color: transparent;
+  border-radius: 50px;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.btn:hover {
+  transform: translateY(5px);
+}
+.btn--contact {
+  background-color: #1A73E8;
+}
+.btn--contact:hover {
+  color: #1A73E8;
+  background-color: #fff;
+  border: 2px solid #1A73E8;
+}
+.btn--resume {
+  border: 2px solid #1A73E8;
+  margin-left: 10px;
+  color: #4475e2;
+}
+.btn--resume:hover {
+  background-color: #1A73E8;
+  color: #fff;
+}
+
+
+
+    </style>
+</head>
+<body>
+
+
+
+<div style="padding:50px;padding-top:80px">
+<!-- hero -->
+<div class="hero">
+  <div class="hero__content">
+    <h1>City Governance</h1>
+    <h3>We are here to assist you.</h3>
+    <hr />
+    <p style="margin-top: 50px; color: #292929;">A platform for the citizens to report issues with road quality, water supply, electricity supply,sanitation & sewerage and crime. Plus an analytics dashboard for the government to view the issues reported, by category,
+      ward & severity.</p>
+    <a href="signin.html">
+    <button style="margin-top: 50px;" class="btn btn--contact">Dashboard</button>
+    </a>
+    <a href="#">
+    <button class="btn btn--resume">Register Complaint</button>
+  </a>
+  
+  </div>
+  <div class="hero__img">
+    <img src="https://lh3.googleusercontent.com/proxy/hMgX85Qti_ZvgeCyuTAIaitRxzOqknMN5y02DpJRgMCtJrDiIsBkKsFhnrL7eVgwy9roIxyhYSk0ROumseYXq92hGVeG8FiP5Qtdg7pWF-E2hOVjs7jcWnr8CVCzFGWntw3-SbfrWJ0_ta5yLwCT-LZV3g0HtyY" alt="people">
+  </div>
+</div>
+</div>
+</body>
+</html>
