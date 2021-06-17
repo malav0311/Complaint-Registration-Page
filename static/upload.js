@@ -83,7 +83,7 @@ var firebaseConfig = {
                     }
                   }) 
                 console.log("sent")
-                window.location.href = "trackinfo";              
+               // window.location.href = "trackinfo";              
  }
 
 
