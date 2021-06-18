@@ -89,7 +89,7 @@ var firebaseConfig = {
           
           var xhr = new XMLHttpRequest();
           var params = 'TId='+ trackId +'&email='+email +'&location='+location +'&message='+message;
-          xhr.open("POST", "http://citygovernance-env.eba-iinhprxk.us-east-2.elasticbeanstalk.com/Complaint", true);
+          xhr.open("POST", "/Complaint", true);
           xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
           xhr.send(params);
 
