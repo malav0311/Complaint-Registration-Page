@@ -82,9 +82,7 @@ var firebaseConfig = {
           //         }) 
           //       console.log("sent")
           //       window.location.href = "trackinfo";      
-          var myForm = document.createElement("FORM");
-          myForm.setAttribute("id","TestForm");
-          document.body.appendChild(myForm);
+         
 
         // this will create a new FORM which is mapped to the Java Object of myForm, with an id of TestForm. Equivalent to: <form id="TestForm"></form>
 
@@ -95,7 +93,7 @@ var firebaseConfig = {
           xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
           xhr.send(params);
 
-          window.location.href = "trackinfo";  
+         // window.location.href = "trackinfo";  
           
          
  }
