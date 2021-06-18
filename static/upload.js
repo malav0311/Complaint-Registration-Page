@@ -56,34 +56,48 @@ var firebaseConfig = {
     // }).then(() => {
     //     window.location = 'trackinfo.html';
     // })
-    var data = [{
+
+    var data = {
            'TId': trackId,
            'email': email,
            'location': location,
            'message': message,
            
-                }];
-           console.log(trackId);
-           console.log(email);
-           console.log(location);   
-           console.log(message);
-           var token = document.getElementsByName("csrfToken").value;
-           $.ajax({
-                    url: '/Complaint',
-                    type: 'POST',
-                    data: {
-                        'TId': trackId,
-                        'email': email,
-                        'location': location,
-                        'message': message,
+                };
+           
+          
+          //  $.ajax({
+          //           url: '/Complaint',
+          //           type: 'POST',
+          //           data: {
+          //               'TId': trackId,
+          //               'email': email,
+          //               'location': location,
+          //               'message': message,
                        
-                    },
-                    success: function(response){
-                      console.log(response);
-                    }
-                  }) 
-                console.log("sent")
-                window.location.href = "trackinfo";              
+          //           },
+          //           success: function(response){
+          //             console.log(response);
+          //           }
+          //         }) 
+          //       console.log("sent")
+          //       window.location.href = "trackinfo";      
+          var myForm = document.createElement("FORM");
+          myForm.setAttribute("id","TestForm");
+          document.body.appendChild(myForm);
+
+        // this will create a new FORM which is mapped to the Java Object of myForm, with an id of TestForm. Equivalent to: <form id="TestForm"></form>
+
+          
+          var xhr = new XMLHttpRequest();
+          var params = 'TId='+ trackId +'&email='+email +'&location='+location +'&message='+message;
+          xhr.open("POST", "/Complaint", true);
+          xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+          xhr.send(params);
+
+          window.location.href = "trackinfo";  
+          
+         
  }
 
 

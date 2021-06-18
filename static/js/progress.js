@@ -77,12 +77,107 @@ document.getElementById("filterform").addEventListener('submit',function(e){
     $("#cardinfo").empty();
     var db = firebase.database().ref("UserInfo");
     var f = 0;
+
+    var arr = [];
     user = db.on('value', function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
           var childData = childSnapshot.val(); 
+          var key = childSnapshot.key;
+          var s = childData;
+          s["key"] = key;
+          arr.push(s);
           
-          if(childData.issue==iss && childData.severity==sev && childData.location==loc && childData.progress==0){
-            f =1;
+        //   if(childData.issue==iss && childData.severity==sev && childData.location==loc && childData.progress==0){
+        //     f =1;
+        //     const container = document.getElementById("cardinfo"); 
+        //     //create a card element
+        //     const card = document.createElement("div");
+        //     card.classList = "card-body";
+        //     const content = `       
+        //     <div class="card">
+      
+        //     <div class="card-body">
+        //       <div class="row">
+        //         <div class="col-sm id="keyval">
+        //           ${childSnapshot.key}
+        //         </div>
+        //         <div class="col-sm">
+        //           ${childData.issue.toUpperCase()}
+        //         </div>
+        //         <div class="col-sm">
+        //         ${childData.severity.toUpperCase()}
+        //         </div>
+        //         <div class="col-sm">
+        //           <button type="button" onclick="toggling(${childSnapshot.key})" class="btn btn-primary">Complete</button>
+        //         </div>
+        //       </div>
+              
+        //       <p class="card-text" style="text-align:left; margin-left:50px;margin-top:20px;">${childData.message}</p>
+             
+        //     </div>
+        //   </div>
+        //     `;
+        //     //append newly created card to the container
+  
+        //   container.innerHTML += content;
+  
+        // }
+        
+
+        });
+        // if(f == 0){
+        //     alert("No items Found!");
+        //     window.location.reload();
+        // }
+
+    });
+    //filter issue
+    if(iss == ""){
+      var loc_arr = arr;
+    }
+    else{
+      var loc_arr = [];
+      var i;
+      for(i=0;i<arr.length;i++){
+        if(arr[i].issue == iss){
+          loc_arr.push(arr[i]);
+        }
+      }
+    }
+
+      //filter location
+      if(loc == ""){
+        var sev_arr = loc_arr;
+      }
+      else{
+        var i;
+        var sev_arr = [];
+        for(i=0;i<loc_arr.length;i++){
+          if(loc_arr[i].location == loc){
+            sev_arr.push(loc_arr[i]);
+          }
+        }
+        
+      }
+
+      //filter severity
+      if(sev == ""){
+        var final = sev_arr;
+      }
+      else{
+        var final = [];
+        var i;
+        for(i=0;i<sev_arr.length;i++){
+          if(sev_arr[i].severity == sev){
+            final.push(sev_arr[i]);
+          }
+        }
+      }
+
+      //display cards;
+      var i;
+      for(i=0;i<final.length;i++){
+        f =1;
             const container = document.getElementById("cardinfo"); 
             //create a card element
             const card = document.createElement("div");
@@ -93,20 +188,20 @@ document.getElementById("filterform").addEventListener('submit',function(e){
             <div class="card-body">
               <div class="row">
                 <div class="col-sm id="keyval">
-                  ${childSnapshot.key}
+                  ${final[i].key}
                 </div>
                 <div class="col-sm">
-                  ${childData.issue.toUpperCase()}
+                  ${final[i].issue.toUpperCase()}
                 </div>
                 <div class="col-sm">
-                ${childData.severity.toUpperCase()}
+                ${final[i].severity.toUpperCase()}
                 </div>
                 <div class="col-sm">
-                  <button type="button" onclick="toggling(${childSnapshot.key})" class="btn btn-primary">Complete</button>
+                  <button type="button" onclick="toggling(${final[i].key})" class="btn btn-primary">Complete</button>
                 </div>
               </div>
               
-              <p class="card-text" style="text-align:left; margin-left:50px;margin-top:20px;">${childData.message}</p>
+              <p class="card-text" style="text-align:left; margin-left:50px;margin-top:20px;">${final[i].message}</p>
              
             </div>
           </div>
@@ -114,17 +209,11 @@ document.getElementById("filterform").addEventListener('submit',function(e){
             //append newly created card to the container
   
           container.innerHTML += content;
-  
-        }
-        
-
-        });
-        if(f == 0){
+      }
+       if(f == 0){
             alert("No items Found!");
             window.location.reload();
         }
-
-    });
     
 
     

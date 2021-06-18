@@ -30,6 +30,7 @@ import pyrebase
 import time
 
 
+
 all_stopwords = stopwords.words('english')
 all_stopwords.extend(["senthilbalaji","adani","chemistrycanada","colorado","location","gaza","gwadar","implicitweet"])
 all_stopwords.extend(["kotri","kotri","ptshrikant","sindh","mkstalin"])
@@ -182,14 +183,13 @@ def landing():
 def complaint():
     global TId,email,location,message,progress,issue_type,severity
     if request.method == 'POST': 
-            # print("hello")
-            # jsdata = request.form['send_data']
-            # print(jsdata)
+        print("got it") 
         print(request.form)    
         TId = request.form['TId']
         email = request.form['email']
         location = request.form['location']
         message = request.form['message']
+        print(TId,email,location,message)
         com = preprocess(message)    
         progress = 0       
         severity = severe(com) 
@@ -198,7 +198,7 @@ def complaint():
         
   
         q = push_data(TId,email,location,message,progress,issue_type, severity)
-     
+        print(q)
     return render_template('Complaint.html')    
 
 @application.route('/trackinfo')
