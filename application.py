@@ -196,6 +196,7 @@ def complaint():
 @application.route('/trackinfo')
 
 def trackinfo():
+    time.sleep(2)
     config = {
              "apiKey": "AIzaSyDV_CPfNZ_9D_gmQrxZcbo7SMS_9GQGYcE",
              "authDomain": "city-5dc6f.firebaseapp.com",
