@@ -128,7 +128,7 @@ def severe(s):
     return LR_result[0]
 
 
-def push_data(id,email,location,message,progress,issue_type, severity):
+def push_data(id,issue_type, severity):
         config = {
                 "apiKey": "AIzaSyDV_CPfNZ_9D_gmQrxZcbo7SMS_9GQGYcE",
                 "authDomain": "city-5dc6f.firebaseapp.com",
@@ -140,13 +140,10 @@ def push_data(id,email,location,message,progress,issue_type, severity):
         }
         # Initialize Firebase
         
-        firebase = pyrebase.initialize_app(config)
-        db = firebase.database()
+        firebase1 = pyrebase.initialize_app(config)
+        db1 = firebase1.database()
         time.sleep(2)
-        db.child("UserInfo").child(id).set({"email":email})
-        db.child("UserInfo").child(id).update({"location":location})
-        db.child("UserInfo").child(id).update({"message":message})
-        db.child("UserInfo").child(id).update({"progress":progress})
+        
         if(issue_type == 0):
             iss = "electric"
         elif(issue_type == 1):
@@ -160,13 +157,13 @@ def push_data(id,email,location,message,progress,issue_type, severity):
         elif(issue_type == 5):
             iss = "garbage"        
                                             
-        db.child("UserInfo").child(id).update({"issue":iss})
+        db1.child("UserInfo").child(id).update({"issue":iss})
         if(int(severity) == 0):
             ss = "Not Severe"
         else:
             ss = "Severe"     
 
-        db.child("UserInfo").child(id).update({"severity":ss})
+        db1.child("UserInfo").child(id).update({"severity":ss})
         time.sleep(3)
 
         
@@ -183,57 +180,57 @@ def landing():
 
 @application.route('/Complaint', methods = ['GET','POST'])
 def complaint():
-    if request.method == 'POST':
-        TId = request.form['TId']
-        email = request.form['email']
-        location = request.form['location']
-        message = request.form['message']
-        print(TId,email,location,message)
-        com = preprocess(message)    
-        progress = 0       
-        severity = severe(com) 
-        issue_type = issue(com)       
+    # if request.method == 'POST':
+    #     TId = request.form['TId']
+    #     email = request.form['email']
+    #     location = request.form['location']
+    #     message = request.form['message']
+    #     print(TId,email,location,message)
+    #     com = preprocess(message)    
+    #     progress = 0       
+    #     severity = severe(com) 
+    #     issue_type = issue(com)       
   
-        q = push_data(TId,email,location,message,progress,issue_type, severity)
+    #     q = push_data(TId,email,location,message,progress,issue_type, severity)
         
     return render_template('Complaint.html')    
 
 @application.route('/trackinfo')
 
 def trackinfo():
-    # time.sleep(2)
-    # config = {
-    #          "apiKey": "AIzaSyDV_CPfNZ_9D_gmQrxZcbo7SMS_9GQGYcE",
-    #          "authDomain": "city-5dc6f.firebaseapp.com",
-    #          "databaseURL": "https://city-5dc6f-default-rtdb.firebaseio.com",
-    #          "projectId": "city-5dc6f",
-    #          "storageBucket": "city-5dc6f.appspot.com",
-    #          "messagingSenderId": "876826563048",
-    #          "appId": "1:876826563048:web:d82f14c0aad5094cf6145d"
-    #  }
-    # firebase = pyrebase.initialize_app(config)
-    # db = firebase.database()
-    # users = db.child('UserInfo').get()     
-    # k = []
-    # l = []
-    # for user in users.each():
-    #     k.append(user.key())
-    #     l.append(users.val())
-    # df = pd.DataFrame(l)   
+    time.sleep(2)
+    config = {
+             "apiKey": "AIzaSyDV_CPfNZ_9D_gmQrxZcbo7SMS_9GQGYcE",
+             "authDomain": "city-5dc6f.firebaseapp.com",
+             "databaseURL": "https://city-5dc6f-default-rtdb.firebaseio.com",
+             "projectId": "city-5dc6f",
+             "storageBucket": "city-5dc6f.appspot.com",
+             "messagingSenderId": "876826563048",
+             "appId": "1:876826563048:web:d82f14c0aad5094cf6145d"
+     }
+    firebase = pyrebase.initialize_app(config)
+    db = firebase.database()
+    users = db.child('UserInfo').get()     
+    k = []
+    l = []
+    for user in users.each():
+        k.append(user.key())
+        l.append(users.val())
+    df = pd.DataFrame(l)   
     
-    # df = df.iloc[0]
-    # df = df.to_frame().reset_index()
+    df = df.iloc[0]
+    df = df.to_frame().reset_index()
 
 
-    # for i,j in df.iterrows():
-    #     if(j[0]['issue']==""):
-    #         com = preprocess(j[0]['message'])                     
-    #         severity = severe(com) 
-    #         issue_type = issue(com) 
-    #         q = push_data(j['index'], issue_type, severity)
-    #         print(q)
-    #         #db.child("UserInfo").child(j['index']).update({"issue":issue_type})
-    #         #db.child("UserInfo").child(j['index']).update({"severity":severity})
+    for i,j in df.iterrows():
+        if(j[0]['issue']==""):
+            com = preprocess(j[0]['message'])                     
+            severity = severe(com) 
+            issue_type = issue(com) 
+            q = push_data(j['index'], issue_type, severity)
+            print(q)
+            #db.child("UserInfo").child(j['index']).update({"issue":issue_type})
+            #db.child("UserInfo").child(j['index']).update({"severity":severity})
     
     return render_template('trackinfo.html')
 
