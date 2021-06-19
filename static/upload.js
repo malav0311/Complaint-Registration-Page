@@ -46,24 +46,26 @@ var firebaseConfig = {
  }   
 
  function saveUserInfo(trackId, email, location, message){
-    // var userInfo = firebase.database().ref("UserInfo/"+ trackId);
-    // userInfo.set({
+    var userInfo = firebase.database().ref("UserInfo/"+ trackId);
+    userInfo.set({
       
-    //     email: email,
-    //     location: location,
-    //     message: message,
-    //     progressFlag: 0,
-    // }).then(() => {
-    //     window.location = 'trackinfo.html';
-    // })
+        email: email,
+        location: location,
+        message: message,
+        progress: 0,
+        severity:"",
+        issue:"",
+    }).then(() => {
+        window.location = 'trackinfo';
+    })
 
-    var data = {
-           'TId': trackId,
-           'email': email,
-           'location': location,
-           'message': message,
+    // var data = {
+    //        'TId': trackId,
+    //        'email': email,
+    //        'location': location,
+    //        'message': message,
            
-                };
+    //             };
            
           
           //  $.ajax({
@@ -87,11 +89,11 @@ var firebaseConfig = {
         // this will create a new FORM which is mapped to the Java Object of myForm, with an id of TestForm. Equivalent to: <form id="TestForm"></form>
 
           
-          var xhr = new XMLHttpRequest();
-          var params = 'TId='+ trackId +'&email='+email +'&location='+location +'&message='+message;
-          xhr.open("POST", "/Complaint", true);
-          xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-          xhr.send(params);
+        //   var xhr = new XMLHttpRequest();
+        //   var params = 'TId='+ trackId +'&email='+email +'&location='+location +'&message='+message;
+        //   xhr.open("POST", "/Complaint", true);
+        //   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        //   xhr.send(params);
 
          // window.location.href = "trackinfo";  
           
