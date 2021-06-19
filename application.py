@@ -198,7 +198,7 @@ def complaint():
 @application.route('/trackinfo')
 
 def trackinfo():
-    time.sleep(2)
+    t1 = time.time()
     config = {
              "apiKey": "AIzaSyDV_CPfNZ_9D_gmQrxZcbo7SMS_9GQGYcE",
              "authDomain": "city-5dc6f.firebaseapp.com",
@@ -211,28 +211,19 @@ def trackinfo():
     firebase = pyrebase.initialize_app(config)
     db = firebase.database()
     users = db.child('UserInfo').get()     
-    k = []
-    l = []
     for user in users.each():
-        k.append(user.key())
-        l.append(users.val())
-    df = pd.DataFrame(l)   
+        if(user.val()['issue']==""):
+            k = user.key()
+            l = user.val()['message']
+    com = preprocess(l)                     
+    severity = severe(com) 
+    issue_type = issue(com)    
     
-    df = df.iloc[0]
-    df = df.to_frame().reset_index()
-
-
-    for i,j in df.iterrows():
-        if(j[0]['issue']==""):
-            com = preprocess(j[0]['message'])                     
-            severity = severe(com) 
-            issue_type = issue(com) 
-            q = push_data(j['index'], issue_type, severity)
-            print(q)
-            #db.child("UserInfo").child(j['index']).update({"issue":issue_type})
-            #db.child("UserInfo").child(j['index']).update({"severity":severity})
-    
+            
+    print(time.time()-t1) 
     return render_template('trackinfo.html')
+           
+    
 
 @application.route('/status')
 def status():
