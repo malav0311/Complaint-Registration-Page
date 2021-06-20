@@ -11,7 +11,6 @@ import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_selection import SelectKBest, chi2
 import pickle
-import logging
 
 # cleaning and dropping stop words
 import re
@@ -202,7 +201,7 @@ def complaint():
                 "appId": "1:876826563048:web:d82f14c0aad5094cf6145d"
         }
         # Initialize Firebase
-        
+        com = preprocess(message) 
         firebase1 = pyrebase.initialize_app(config)
         print(firebase1)
         db1 = firebase1.database()
