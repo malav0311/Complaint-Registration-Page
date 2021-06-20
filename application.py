@@ -18,6 +18,7 @@ import nltk
 from nltk.corpus import stopwords
 nltk.download("stopwords")
 nltk.download('wordnet')
+nltk.download('punkt')
 
 #stemming
 from nltk.stem import PorterStemmer
