@@ -46,44 +46,44 @@ var firebaseConfig = {
  }   
 
  function saveUserInfo(trackId, email, location, message){
-    var userInfo = firebase.database().ref("UserInfo/"+ trackId);
-    userInfo.set({
+    // var userInfo = firebase.database().ref("UserInfo/"+ trackId);
+    // userInfo.set({
       
-        email: email,
-        location: location,
-        message: message,
-        progress: 0,
-        severity:"",
-        issue:"",
-    }).then(() => {
-        window.location = 'trackinfo';
-    })
+    //     email: email,
+    //     location: location,
+    //     message: message,
+    //     progress: 0,
+    //     severity:"",
+    //     issue:"",
+    // }).then(() => {
+    //     window.location = 'trackinfo';
+    // })
 
-    // var data = {
-    //        'TId': trackId,
-    //        'email': email,
-    //        'location': location,
-    //        'message': message,
+    var data = {
+           'TId': trackId,
+           'email': email,
+           'location': location,
+           'message': message,
            
-    //             };
+                };
            
           
-    //        $.ajax({
-    //                 url: '/Complaint',
-    //                 type: 'POST',
-    //                 data: {
-    //                     'TId': trackId,
-    //                     'email': email,
-    //                     'location': location,
-    //                     'message': message,
+           $.ajax({
+                    url: '/Complaint',
+                    type: 'POST',
+                    data: {
+                        'TId': trackId,
+                        'email': email,
+                        'location': location,
+                        'message': message,
                        
-    //                 },
-    //                 success: function(response){
-    //                   console.log(response);
-    //                 }
-    //               }) 
-    //             console.log("sent")
-    //             window.location.href = "trackinfo";      
+                    },
+                    success: function(response){
+                      console.log(response);
+                    }
+                  }) 
+                console.log("sent")
+                window.location.href = "trackinfo";      
          
 
         // this will create a new FORM which is mapped to the Java Object of myForm, with an id of TestForm. Equivalent to: <form id="TestForm"></form>

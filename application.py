@@ -180,47 +180,47 @@ def landing():
 
 @application.route('/Complaint', methods = ['GET','POST'])
 def complaint():
-    # if request.method == 'POST':
-    #     TId = request.form['TId']
-    #     email = request.form['email']
-    #     location = request.form['location']
-    #     message = request.form['message']
-    #     print(TId,email,location,message)
-    #     com = preprocess(message)    
-    #     progress = 0       
-    #     severity = severe(com) 
-    #     issue_type = issue(com)       
+    if request.method == 'POST':
+        TId = request.form['TId']
+        email = request.form['email']
+        location = request.form['location']
+        message = request.form['message']
+        print(TId,email,location,message)
+        com = preprocess(message)    
+        progress = 0       
+        severity = severe(com) 
+        issue_type = issue(com)       
   
-    #     q = push_data(TId,email,location,message,progress,issue_type, severity)
+        q = push_data(TId,email,location,message,progress,issue_type, severity)
         
     return render_template('Complaint.html')    
 
 @application.route('/trackinfo')
 
 def trackinfo():
-    t1 = time.time()
-    config = {
-             "apiKey": "AIzaSyDV_CPfNZ_9D_gmQrxZcbo7SMS_9GQGYcE",
-             "authDomain": "city-5dc6f.firebaseapp.com",
-             "databaseURL": "https://city-5dc6f-default-rtdb.firebaseio.com",
-             "projectId": "city-5dc6f",
-             "storageBucket": "city-5dc6f.appspot.com",
-             "messagingSenderId": "876826563048",
-             "appId": "1:876826563048:web:d82f14c0aad5094cf6145d"
-     }
-    firebase = pyrebase.initialize_app(config)
-    db = firebase.database()
-    users = db.child('UserInfo').get()     
-    for user in users.each():
-        if(user.val()['issue']==""):
-            k = user.key()
-            l = user.val()['message']
-    com = preprocess(l)                     
-    severity = severe(com) 
-    issue_type = issue(com)    
+    # t1 = time.time()
+    # config = {
+    #          "apiKey": "AIzaSyDV_CPfNZ_9D_gmQrxZcbo7SMS_9GQGYcE",
+    #          "authDomain": "city-5dc6f.firebaseapp.com",
+    #          "databaseURL": "https://city-5dc6f-default-rtdb.firebaseio.com",
+    #          "projectId": "city-5dc6f",
+    #          "storageBucket": "city-5dc6f.appspot.com",
+    #          "messagingSenderId": "876826563048",
+    #          "appId": "1:876826563048:web:d82f14c0aad5094cf6145d"
+    #  }
+    # firebase = pyrebase.initialize_app(config)
+    # db = firebase.database()
+    # users = db.child('UserInfo').get()     
+    # for user in users.each():
+    #     if(user.val()['issue']==""):
+    #         k = user.key()
+    #         l = user.val()['message']
+    # com = preprocess(l)                     
+    # severity = severe(com) 
+    # issue_type = issue(com)    
     
             
-    print(time.time()-t1) 
+    # print(time.time()-t1) 
     return render_template('trackinfo.html')
            
     
