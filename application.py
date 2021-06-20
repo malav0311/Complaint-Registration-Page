@@ -11,6 +11,7 @@ import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_selection import SelectKBest, chi2
 import pickle
+import logging
 
 # cleaning and dropping stop words
 import re
@@ -191,15 +192,33 @@ def complaint():
         location = request.form['location']
         message = request.form['message']
         print(TId,email,location,message)
-        com = preprocess(message)    
-        print(com)
-        progress = 0       
-        severity = severe(com) 
-        print(severity)
-        issue_type = issue(com)    
-        print(issue_type)   
+        config = {
+                "apiKey": "AIzaSyDV_CPfNZ_9D_gmQrxZcbo7SMS_9GQGYcE",
+                "authDomain": "city-5dc6f.firebaseapp.com",
+                "databaseURL": "https://city-5dc6f-default-rtdb.firebaseio.com",
+                "projectId": "city-5dc6f",
+                "storageBucket": "city-5dc6f.appspot.com",
+                "messagingSenderId": "876826563048",
+                "appId": "1:876826563048:web:d82f14c0aad5094cf6145d"
+        }
+        # Initialize Firebase
+        
+        firebase1 = pyrebase.initialize_app(config)
+        print(firebase1)
+        db1 = firebase1.database()
+        print(db1)
+        db1.child("UserInfo").child(id).set({"email":email})
+        db1.child("UserInfo").child(id).update({"location":location})
+        db1.child("UserInfo").child(id).update({"message":message})
+        # com = preprocess(message)    
+        # print(com)
+        # progress = 0       
+        # severity = severe(com) 
+        # print(severity)
+        # issue_type = issue(com)    
+        # print(issue_type)   
   
-        q = push_data(TId,email,location,message,progress,issue_type, severity)
+        # q = push_data(TId,email,location,message,progress,issue_type, severity)
         
     return render_template('Complaint.html')    
 
