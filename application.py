@@ -128,7 +128,7 @@ def severe(s):
     return LR_result[0]
 
 
-def push_data(id,issue_type, severity):
+def push_data(id,email,location,message,progress,issue_type, severity):
         config = {
                 "apiKey": "AIzaSyDV_CPfNZ_9D_gmQrxZcbo7SMS_9GQGYcE",
                 "authDomain": "city-5dc6f.firebaseapp.com",
@@ -141,9 +141,14 @@ def push_data(id,issue_type, severity):
         # Initialize Firebase
         
         firebase1 = pyrebase.initialize_app(config)
+        print(firebase1)
         db1 = firebase1.database()
-        time.sleep(2)
-        
+        print(db1)
+        db1.child("UserInfo").child(id).set({"email":email})
+        db1.child("UserInfo").child(id).update({"location":location})
+        db1.child("UserInfo").child(id).update({"message":message})
+        db1.child("UserInfo").child(id).update({"progress":progress})
+        print("hello world")
         if(issue_type == 0):
             iss = "electric"
         elif(issue_type == 1):
@@ -164,7 +169,7 @@ def push_data(id,issue_type, severity):
             ss = "Severe"     
 
         db1.child("UserInfo").child(id).update({"severity":ss})
-        time.sleep(3)
+        
 
         
         return "success"
@@ -187,9 +192,12 @@ def complaint():
         message = request.form['message']
         print(TId,email,location,message)
         com = preprocess(message)    
+        print(com)
         progress = 0       
         severity = severe(com) 
-        issue_type = issue(com)       
+        print(severity)
+        issue_type = issue(com)    
+        print(issue_type)   
   
         q = push_data(TId,email,location,message,progress,issue_type, severity)
         
@@ -247,4 +255,4 @@ def index1():
     
 
 if __name__ == '__main__':
-    application.run()    
+    application.run(debug=True)    
