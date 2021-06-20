@@ -221,11 +221,41 @@ document.getElementById("filterform").addEventListener('submit',function(e){
 
 function toggling(id){
     console.log(id);
+    
     var userInfo = firebase.database().ref("UserInfo/"+ id);
     userInfo.update({
         progress:1,
     });
-    window.location.reload();
+    
+    
+    var db = firebase.database().ref("UserInfo");
+    var email;
+    user = db.once('value', function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+          var childData = childSnapshot.val(); 
+          
+          if(childSnapshot.key == id){
+            email = childData.email;
+            console.log(email);
+          }
+        
+        });
+      });
+      
+      $.ajax({
+        url: '/index',
+        type: 'POST',
+        data: {
+            'TId': id,
+            'email': email,
+ 
+           
+        },
+        success: function(response){
+          console.log(response);
+        }
+      }) 
+     window.location = "/index";
     
 
 };

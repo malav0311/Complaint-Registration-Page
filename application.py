@@ -29,13 +29,32 @@ from nltk.stem import WordNetLemmatizer
 #firebase
 import pyrebase
 import time
-
+import smtplib
 
 
 
 all_stopwords = stopwords.words('english')
 all_stopwords.extend(["senthilbalaji","adani","chemistrycanada","colorado","location","gaza","gwadar","implicitweet"])
 all_stopwords.extend(["kotri","kotri","ptshrikant","sindh","mkstalin"])
+
+def send_email(e, m):
+     
+    # creates SMTP session
+    sm = smtplib.SMTP('smtp.gmail.com', 587)
+    
+    # start TLS for security
+    sm.starttls()
+    
+    # Authentication
+    sm.login("governancecity@gmail.com", "City@1234")
+    
+      
+    # sending the mail
+    sm.sendmail("governancecity@gmail.com", e, m)
+    
+    # terminating the session
+    sm.quit()
+
 
 def preprocess(s):
     #cleaning the data
@@ -116,13 +135,13 @@ def severe(s):
     y_train = data.Severity
     vectorizer = TfidfVectorizer(sublinear_tf=True, max_df=0.5,stop_words='english', ngram_range=(1,3))
     X_train = vectorizer.fit_transform(data.clean_posts)
-    ch2 = SelectKBest(chi2, k=35)
+    ch2 = SelectKBest(chi2, k=50)
     X_train = ch2.fit_transform(X_train, y_train)
     X_test = np.array([s])
     X_test = vectorizer.transform(X_test)
     X_test = ch2.transform(X_test)
        
-    LR_model = pickle.load(open("static/models/LR_sev.sav", 'rb'))
+    LR_model = pickle.load(open("static/models/sev_LR.sav", 'rb'))
     
     LR_result = LR_model.predict(X_test)
        
@@ -202,6 +221,8 @@ def complaint():
         print(issue_type)   
   
         q = push_data(TId,email,location,message,progress,issue_type, severity)
+        ebody = "Hello, \n Your complaint is Registered. Your complaint id is: " + TId +" ."
+        send_email(email, ebody)
         
     return render_template('Complaint.html')    
 
@@ -247,8 +268,15 @@ def signin():
 def Dashboard1():
     return render_template('Dashboard1.html')
  
-@application.route('/index')
+@application.route('/index',methods = ['GET','POST'])
 def index():
+    if request.method == 'POST':
+        print("IN here")
+        TId = request.form['TId']
+        email = request.form['email']
+        print(TId, email)
+        ebody = "Hello, \n Your issue(id: "+ TId +") has been resolved. \n Thank you for your patience."
+        send_email(email, ebody)
     return render_template('index.html')
 
 @application.route('/index1')
