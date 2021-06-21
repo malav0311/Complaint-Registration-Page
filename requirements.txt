@@ -1,3 +1,5 @@
+atomicwrites==1.4.0
+attrs==21.2.0
 CacheControl==0.12.6
 cachetools==4.2.2
 certifi==2021.5.30
@@ -7,6 +9,7 @@ click==8.0.1
 colorama==0.4.4
 cryptography==3.4.7
 Deprecated==1.2.12
+firebase-admin==5.0.1
 Flask==2.0.1
 gcloud==0.18.3
 google-api-core==1.30.0
@@ -22,10 +25,12 @@ googleapis-common-protos==1.53.0
 grpcio==1.38.0
 httplib2==0.19.1
 idna==2.10
+iniconfig==1.1.1
 itsdangerous==2.0.1
 Jinja2==3.0.1
 joblib==1.0.1
 jwcrypto==0.9.1
+logger==1.4
 MarkupSafe==2.0.1
 msgpack==1.0.2
 nltk==3.6.2
@@ -36,8 +41,10 @@ pandas==1.2.4
 pep517==0.10.0
 pip-tools==6.1.0
 pipdeptree==2.0.0
+pluggy==0.13.1
 proto-plus==1.18.1
 protobuf==3.17.3
+py==1.10.0
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycparser==2.20
@@ -45,6 +52,7 @@ pycryptodome==3.10.1
 PyJWT==1.7.1
 pyparsing==2.4.7
 -e git+https://github.com/roobeshbalaji/Pyrebase@591d0cb91ed85d210bb54909ee23f526e070d3bc#egg=Pyrebase
+pytest==6.2.4
 python-dateutil==2.8.1
 python-jwt==3.3.0
 pytz==2021.1
