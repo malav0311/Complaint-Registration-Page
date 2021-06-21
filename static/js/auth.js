@@ -24,6 +24,7 @@ var firebaseConfig = {
     // ...
   })
   .catch((error) => {
+    alert("Wrong Id or Password!")
     var errorCode = error.code;
     var errorMessage = error.message;
   });

@@ -5,7 +5,7 @@ Created on Sat Jun 12 15:02:24 2021
 
 @author: Malav
 """
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import pandas as pd
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -258,7 +258,11 @@ def trackinfo():
 
 @application.route('/status')
 def status():
-    return render_template('status.html')        
+    return render_template('status.html') 
+
+@application.route('/sms')
+def sms():
+    return render_template('sms.html')            
 
 @application.route('/signin')
 def signin():
@@ -281,7 +285,13 @@ def index():
 
 @application.route('/index1')
 def index1():
-    return render_template('index1.html')    
+
+    return render_template('index1.html')   
+
+@application.route('/test')
+def test():
+    
+    return jsonify({'success': '1'})
     
 
 if __name__ == '__main__':
