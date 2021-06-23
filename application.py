@@ -30,7 +30,7 @@ from nltk.stem import WordNetLemmatizer
 import pyrebase
 import time
 import smtplib
-from twilio.twiml.messaging_response import MessagingResponse
+
 
 
 all_stopwords = stopwords.words('english')
@@ -293,35 +293,7 @@ def test():
     
     return jsonify({'success': '1'})
 
-@application.route("/smsmsg", methods=['POST'])
-def sms_reply():
-    """Respond to incoming calls with a simple text message."""
-    
-    # Use this data in your application logic
-    from_number = request.form['From']
-    body = request.form['Body']
-    l = body.split(" ")
-    email = l[0]
-    location = l[1]
-    l.pop(0)
-    l.pop(0)
-    message = "  ".join(l)
-    print(message)
-    d = datetime.datetime.now()
-    tid = d.strftime('%Y%m%d%H%M%S')
-    com = preprocess(message)    
-    progress = 0       
-    severity = severe(com) 
-    issue_type = issue(com) 
-    q = push_data(tid,email,location,message,progress,issue_type, severity)
 
-    # Start our TwiML response
-    resp = MessagingResponse()
-
-    # Add a message
-    resp.message("Your id is:")
-
-    return str(resp)
 
 
 if __name__ == '__main__':
