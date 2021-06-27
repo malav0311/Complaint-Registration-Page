@@ -260,9 +260,7 @@ def trackinfo():
 def status():
     return render_template('status.html') 
 
-@application.route('/sms')
-def sms():
-    return render_template('sms.html')            
+         
 
 @application.route('/signin')
 def signin():
