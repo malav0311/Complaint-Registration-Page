@@ -154,9 +154,7 @@ document.getElementById("filterform").addEventListener('submit',function(e){
               <div class="col-sm">
               ${final[i].severity.toUpperCase()}
               </div>
-              <div class="col-sm">
-                <button type="button" onclick="toggling(${final[i].key})" class="btn btn-primary">Complete</button>
-              </div>
+              
             </div>
             
             <p class="card-text" style="text-align:left; margin-left:50px;margin-top:20px;">${final[i].message}</p>
